@@ -62,24 +62,25 @@ namespace SimpleInternetControl
             if (GetInterfaceStatus(strSelectedItem))
             {
                 DisableInternet(strSelectedItem);
-                ChangeButtonStatus(false);
+                ChangeStatus(false);
             }
             else
             {
                 EnableInternet(strSelectedItem);
-                ChangeButtonStatus(true);
+                ChangeStatus(true);
             }
         }
 
         private void Combobox_interface_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string strSelectedItem = combobox_interface.SelectedValue.ToString();
-            ChangeButtonStatus(GetInterfaceStatus(strSelectedItem));
+            ChangeStatus(GetInterfaceStatus(strSelectedItem));
         }
 
-        private void ChangeButtonStatus(bool status)
+        private void ChangeStatus(bool status)
         {
             btn_switch.Content = (status) ? "Disable" : "Enable";
+            circle_status.Fill = (status) ? new SolidColorBrush(Colors.MediumSpringGreen) : new SolidColorBrush(Colors.Crimson);
         }
 
         private bool GetInterfaceStatus(string interface_name)

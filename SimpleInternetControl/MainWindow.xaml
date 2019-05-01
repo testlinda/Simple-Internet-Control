@@ -5,14 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SimpleInternetControl"
         mc:Ignorable="d"
-        Title="Internet Control" Icon="Resource/icon.ico" Height="150" Width="120">
+        Title="Internet Control" Icon="Resource/icon.ico" Height="150" Width="200">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="10" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <ComboBox Grid.Row="0" Name="combobox_interface" IsSynchronizedWithCurrentItem="True" SelectedIndex="0" SelectionChanged="Combobox_interface_SelectionChanged"/>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Ellipse Width="20" Height="20" Name="circle_status"/>
+            <ComboBox Grid.Column="2" Name="combobox_interface" IsSynchronizedWithCurrentItem="True" SelectedIndex="0" SelectionChanged="Combobox_interface_SelectionChanged"/>
+        </Grid>
         <Button Grid.Row="2" Name="btn_switch" Content="Disable" Click="Button_Click"/>
     </Grid>
 </Window>
